@@ -1,5 +1,5 @@
 
-#pragma warning(disable : 4996)
+//#pragma warning(disable : 4996)
 #include <iostream>
 #include<vector>
 #include<string>
@@ -16,47 +16,6 @@ void TransactionMenu();
 enum enMenu { ShowClientList = 1, AddClient = 2, DeleteClient = 3, UpdateClient = 4, FindClient = 5,Transaction=6, Exit = 7 };
 enum enTransaction{Deopsit=1,Withdrow=2,TotalBalance=3,MainMenu=4};
 
-//void PrintEachWordInString(string S1)
-//{
-//	string delim = " ";
-//	cout << "\nYour String Words are: \n\n";
-//	short pos = 0;
-//	string sWord;
-//	while ((pos = S1.find(delim)) != std::string::npos)
-//	{
-//		sWord = S1.substr(0, pos);
-//		if (sWord != "")
-//		{
-//			cout << sWord << endl;
-//		}
-//		S1.erase(0, pos + delim.length());
-//	}
-//	if (S1 != "")
-//	{
-//		cout << S1 << endl;
-//	}
-//}
-//int CountStringWords(string S1)
-//{
-//	string delim = " ";
-//	short pos = 0;
-//	string sWord;
-//	short counter = 0;
-//	while ((pos = S1.find(delim)) != std::string::npos)
-//	{
-//		sWord = S1.substr(0, pos);
-//		if (sWord != "")
-//		{
-//			counter++;
-//		}
-//		S1.erase(0, pos + delim.length());
-//	}
-//	if (S1 != "")
-//	{
-//		counter++;
-//	}
-//	return counter;
-//}
 vector <string> SplitString(string S1, string delim)
 {
 	vector <string> vString;
@@ -79,33 +38,6 @@ vector <string> SplitString(string S1, string delim)
 	}
 	return vString;
 }
-//string TrimLeft(string S2)
-//{
-//	for (short i = 0;i < S2.length();i++)
-//	{
-//		if (S2[i] != ' ')
-//		{
-//			return S2.substr(i, S2.length() - i);
-//		}
-//	}
-//	return "";
-//}
-//string TrimRight(string S2)
-//{
-//	for (short i = S2.length()-1;i >=0 ;i--)
-//	{
-//		if (S2[i] != ' ')
-//		{
-//			return S2.substr(0, i + 1);
-//		}
-//	}
-//	return "";
-//
-//}
-//string Trim(string S2)
-//{
-//	return TrimLeft(TrimRight(S2));
-//}
 string JoinString(vector <string>& vString, string delim)
 {
 	string S1 = "";
@@ -116,76 +48,6 @@ string JoinString(vector <string>& vString, string delim)
 	}
 	return S1.substr(0, S1.length() - delim.length());
 }
-//string JoinString(string Arr[],int Length,string delim)
-//{
-//	string S1 = "";
-//	for (short i = 0;i < Length;i++)
-//	{
-//		S1 = S1 + Arr[i] + delim;
-//	}
-//	return S1.substr(0,S1.length()-delim.length());
-//}
-//string ReverseWordsInString(string S1)
-//{
-//	vector <string> vString;
-//	string S2 = "";
-//	vString = SplitString(S1, " ");
-//	vector<string>::iterator iter = vString.end();
-//	while(iter != vString.begin())
-//	{
-//		--iter;
-//		S2 += *iter + " ";
-//	}
-//	S2 = S2.substr(0, S2.length() - 1);
-//	return S2;
-//}
-//string ReplaceWordInString(string S1,string StringToReplace,string sReplaceTo)
-//{
-//	short pos = S1.find(StringToReplace);
-//
-//	while ((pos != std::string::npos))
-//	{
-//		S1 = S1.replace(pos, StringToReplace.length(), sReplaceTo);
-//		pos = S1.find(StringToReplace);
-//	}
-//	return S1;
-//}
-//string ReplaceWordInStringUsingSplitFunction(string S1, string StringToReplace, string sReplaceTo,bool MatchCase = true)
-//{
-//
-//	vector<string>vString = SplitString(S1, " ");
-//	for (string& s : vString)
-//	{
-//		if (MatchCase)
-//		{
-//			if (s == StringToReplace)
-//			{
-//				s = sReplaceTo;
-//			}
-//		}
-//		else
-//		{
-//			if (LowerAllLettersInString(s) == LowerAllLettersInString(StringToReplace))
-//			{
-//				s = sReplaceTo;
-//			}
-//		}
-//	}
-//	return JoinString(vString," ");
-//
-//}
-//string RemovePunct(string S1)
-//{
-//	string S2 = "";
-//	for (short i = 0;i < S1.length();i++)
-//	{
-//		if (!ispunct(S1[i]))
-//		{
-//			S2 += S1[i];
-//		}
-//	}
-//	return S2;
-//}
 struct stClientData
 {
 	string Account_Number;
@@ -268,19 +130,6 @@ string ConvertRecordToLine(stClientData ClientData, string seprator = "#//#")
 	ClientRecord += to_string(ClientData.Account_Balance);
 	return ClientRecord;
 }
-
-//void SplitEachClientData(stClientData Client, vector <string> vClient)
-//{
-//
-//
-//	for (short i = 0;i < vClient.size();++i)
-//	{
-//		Client = ConvertLineToRecord(vClient[i]);
-//		PrintRecordCard(Client);
-//	}
-//
-//
-//}
 void PrintRecordCard(stClientData Client)
 {
 	cout << "\n\nThe Following are the Client details: \n\n";
@@ -336,12 +185,6 @@ void PrintClientRecord(stClientData Client)
 void ShowClientsData()
 {
 
-
-	/*char ask = 'Y';
-	cout << "\n\n\tDo You Want To Show Client Data ? ";
-	cin >> ask;
-	if (ask == 'Y' || ask == 'y')
-	{*/
 	vector<stClientData>vClients;
 	vClients = LoadClientsDataFromFile(FileName);
 	cout << "\n\t\t\t\t\tClient List(" << vClients.size() << ")Client(s).";
@@ -358,8 +201,6 @@ void ShowClientsData()
 		cout << endl;
 	}
 	cout << "____________________________________________________________________________________________________\n";
-
-	//}
 }
 string ReadAccountNumber()
 {
